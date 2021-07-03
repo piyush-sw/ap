@@ -1104,6 +1104,11 @@ section {
   opacity: 0;
 }
 
+.portfolio .portfolio-wrap .box-image-fix-size {
+  height: 25em;
+  width: 25em;
+}
+
 .portfolio .portfolio-wrap .portfolio-info {
   opacity: 0;
   position: absolute;
