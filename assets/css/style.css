@@ -382,14 +382,15 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100vh;
   position: relative;
-  background: url("../img/hero-bg.jpg") top center;
+  /* background: url("../img/hero-bg.jpg") top center; */
+  background: url("../img/box-factory.jpg") top center;
   background-size: cover;
   position: relative;
 }
 
 #hero:before {
   content: "";
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0);
   position: absolute;
   bottom: 0;
   top: 0;
@@ -411,7 +412,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero h2 {
-  color: #5e5e5e;
+  color: #171717;
   margin: 10px 0 0 0;
   font-size: 22px;
 }
