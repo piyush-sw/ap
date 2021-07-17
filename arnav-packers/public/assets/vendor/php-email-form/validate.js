@@ -25,9 +25,14 @@
       thisForm.querySelector('.error-message').classList.remove('d-block');
       thisForm.querySelector('.sent-message').classList.remove('d-block');
 
-      let formData = new FormData( thisForm );
+      let allFormControls = thisForm.querySelectorAll('.form-control');
+      allFormControls.forEach(fc => console.log(fc.name, fc.value));
 
-      if ( recaptcha ) {
+      let formData = {};
+      allFormControls.forEach(fc => formData[fc.name] = fc.value);
+      php_email_form_submit(thisForm, action, formData);
+
+      /* if ( recaptcha ) {
         if(typeof grecaptcha !== "undefined" ) {
           grecaptcha.ready(function() {
             try {
@@ -45,15 +50,18 @@
         }
       } else {
         php_email_form_submit(thisForm, action, formData);
-      }
+      } */
     });
   });
 
   function php_email_form_submit(thisForm, action, formData) {
     fetch(action, {
       method: 'POST',
-      body: formData,
-      headers: {'X-Requested-With': 'XMLHttpRequest'}
+      body: JSON.stringify(formData),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
     })
     .then(response => {
       if( response.ok ) {
