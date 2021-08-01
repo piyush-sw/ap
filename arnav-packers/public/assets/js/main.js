@@ -11,7 +11,7 @@
 
 
   const getProductQuoteModal = document.getElementById("getProductQuoteModal");
-  getProductQuoteModal.addEventListener("show.bs.modal", function (event) {
+  getProductQuoteModal?.addEventListener("show.bs.modal", function (event) {
     // Button that triggered the modal
     const button = event.relatedTarget;
 
