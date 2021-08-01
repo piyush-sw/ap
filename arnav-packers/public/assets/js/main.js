@@ -1,14 +1,31 @@
 (function() {
   "use strict";
 
-  var myBootstrapModals = Array.from(document.getElementsByClassName('modal'));
+  const myBootstrapModals = Array.from(document.getElementsByClassName('modal'));
   myBootstrapModals?.forEach(bsModal => {
     bsModal.addEventListener('show.bs.modal', (event) => {
-      debugger;
       bsModal.querySelector('.sent-message').classList.remove('d-block');
       bsModal.querySelector('.error-message').classList.remove('d-block');
     })
   })
+
+
+  const getProductQuoteModal = document.getElementById("getProductQuoteModal");
+  getProductQuoteModal.addEventListener("show.bs.modal", function (event) {
+    // Button that triggered the modal
+    const button = event.relatedTarget;
+
+    // Extract info from data-bs-* attributes
+    const productName = button.getAttribute("data-bs-product-name");
+
+    // Update the modal's content.
+    const modalTitle = getProductQuoteModal.querySelector(".modal-title");
+    const modalBodyInput = getProductQuoteModal.querySelector(".modal-body #productName");
+
+    modalTitle.textContent = productName;
+    modalBodyInput.value = productName;
+  });
+
 
   /**
    * Easy selector helper function

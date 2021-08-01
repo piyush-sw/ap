@@ -66,7 +66,43 @@ router.post(
           </body>
         </html>
     `;
-    const result = await sendEmail('Quotation request', emailHTML);
+    const result = await sendEmail("Quotation request", emailHTML);
+    if (!result) {
+      res.send(500).send("An error occured");
+      return;
+    }
+    res.status(201).send("OK");
+  }
+);
+
+router.post(
+  "/send-email-product-enquiry-form",
+  async function (req, res, next) {
+    const body = req.body;
+    const sanitizedBody = JSON.parse(req.sanitize(JSON.stringify(body)));
+    const { name, phone, email, productName, details } = sanitizedBody;
+    const emailHTML = `
+        <html>
+          <body>
+            <p>A visitor has requested quotation for a product:</p>
+          
+            <p> Product Name: ${productName}</p>
+          
+            <p> Additional details: ${details} <br> </p>
+          
+            <p>
+              Visitor's contact details: <br>
+              Name: ${name} <br>
+              Phone: ${phone} <br>
+              Email id: ${email || "Not provided"} <br>
+            </p>
+          </body>
+        </html>
+    `;
+    const result = await sendEmail(
+      `Enquiry | ${name} | ${productName}`,
+      emailHTML
+    );
     if (!result) {
       res.send(500).send("An error occured");
       return;
