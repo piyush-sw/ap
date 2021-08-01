@@ -19,7 +19,7 @@ router.get("/pastry-box-details", function (req, res, next) {
   res.render("pastry-box-details");
 });
 
-router.post("/contact-us-form-send-email", async function (req, res, next) {
+router.post("/send-email-contact-us-form", async function (req, res, next) {
   const body = req.body;
   const sanitizedBody = JSON.parse(req.sanitize(JSON.stringify(body)));
   const { name, email, subject, message } = sanitizedBody;
@@ -43,4 +43,35 @@ router.post("/contact-us-form-send-email", async function (req, res, next) {
   }
   res.status(201).send("OK");
 });
+
+router.post(
+  "/send-email-get-instant-quote-form",
+  async function (req, res, next) {
+    const body = req.body;
+    const sanitizedBody = JSON.parse(req.sanitize(JSON.stringify(body)));
+    const { name, phone, email, orderDescription } = sanitizedBody;
+    const emailHTML = `
+        <html>
+          <body>
+            <p>A visitor has requested quotation for the following requirements:</p>
+            <p>
+              Description: ${orderDescription} <br>
+            </p>
+            <p>
+              Visitor's contact details: <br>
+              Name: ${name} <br>
+              Phone: ${phone} <br>
+              Email id: ${email || "Not provided"} <br>
+            </p>
+          </body>
+        </html>
+    `;
+    const result = await sendEmail('Quotation request', emailHTML);
+    if (!result) {
+      res.send(500).send("An error occured");
+      return;
+    }
+    res.status(201).send("OK");
+  }
+);
 module.exports = router;

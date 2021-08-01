@@ -429,6 +429,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 30px;
   color: #fff;
   background: #2487ce;
+  cursor: pointer;
 }
 
 #hero .btn-get-started:hover {
