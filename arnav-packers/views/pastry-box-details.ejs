@@ -110,7 +110,7 @@
                 <li><strong>Customizable</strong>: Color, Print, Size, Shape</li>
               </ul>
               <div>
-                <button class="btn-get-instant-quote">Get Instant Quote</button>
+                <button class="btn-get-instant-quote" data-bs-toggle="modal" data-bs-target="#getProductQuoteModal" data-bs-product-name="Pastry Box"">Get Instant Quote</button>
               </div>
             </div>
           </div>
@@ -122,6 +122,10 @@
     <!-- End Portfolio Details Section -->
 
   </main><!-- End #main -->
+
+  <!-- Modal -->
+  <%- include('product-quote-modal-form'); %>
+  <!-- Modal End -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
