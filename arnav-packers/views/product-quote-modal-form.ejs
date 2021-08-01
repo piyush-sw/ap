@@ -1,0 +1,47 @@
+<div class="modal fade" id="getProductQuoteModal" tabindex="-1" aria-labelledby="getProductQuoteModal"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Get Instant Quote</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body contact">
+        <form action="/send-email-product-enquiry-form" method="post" role="form" class="php-email-form">
+          <div class="row g-3">
+            <div class="col-12">
+              <label for="inputName" class="form-label">Name*</label>
+              <input type="text" class="form-control" name="name" id="inputName" placeholder="Your Name" required>
+            </div>
+            <div class="col-12">
+              <label for="inputPhone" class="form-label">Phone*</label>
+              <input type="tel" pattern="[0-9]{10}" class="form-control" name="phone" id="inputPhone"
+                placeholder="10 digit phone number" required>
+            </div>
+            <div class="col-12">
+              <label for="inputEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" name="email" id="inputEmail">
+            </div>
+            <div class="col-12">
+              <label for="productName" class="form-label">Product Name*</label>
+              <input readonly type="text" class="form-control" name="productName" id="productName" required>
+            </div>
+            <div class="col-12">
+              <label for="inputEmail" class="form-label">Details</label>
+              <textarea class="form-control" name="details" rows="3"
+                placeholder="Please provide details of your requirements" required></textarea>
+            </div>
+            <div class="">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">We have received your message. We will get back to you soon. Thank you!</div>
+            </div>
+            <div class="col-12 text-center">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
