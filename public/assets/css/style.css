@@ -1897,6 +1897,13 @@ section {
   text-decoration: none;
 }
 
+#footer .footer-logo {
+  background-image: url('../img/branding/logo-adobe.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
 .btn-get-instant-quote {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
